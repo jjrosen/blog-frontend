@@ -1,6 +1,9 @@
 
-
 #posts img {
+  width: 300px;
+}
+
+#posts-index img {
   width: 300px;
 }
 
