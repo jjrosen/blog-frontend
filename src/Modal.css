@@ -1,0 +1,37 @@
+.modal-background {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.modal-main {
+  position:fixed;
+  background: white;
+  width: 80%;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  padding: 1em;
+}
+
+.modal-main button.close {
+  font-size: 1em;
+  background: white;
+  border: 2px solid black;
+  position: absolute;
+  top: 0em; 
+  right: 0.2em;
+  padding: 0.3px 2px;
+  cursor: pointer;
+  color: black;  
+}
+.modal-main button.close:hover{
+  background-color: black;
+  color: white;
+}
