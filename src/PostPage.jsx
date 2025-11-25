@@ -21,10 +21,21 @@ export function PostPage() {
     setCurrentPost(post);
   };
 
+  const handleCreate = (params) => {
+    console.log("handleCreate");
+    axios.post("http://localhost:3000/posts.json", params).then((response) => {
+      console.log(response.data);
+      // let copiedPosts = Array.from(posts); This is the long way of writing this
+      // copiedPosts.push(response.data);
+      // setPosts(copiedPosts);
+      setPosts([...posts, response.data]);
+    });
+  };
+
   useEffect(handleIndex, []);
   return (
     <div>
-      <NewPost />
+      <NewPost onCreate={handleCreate} />
       <Post />
       <PostsIndex postsProp={posts} onShow={handleShow} />
       <Modal
