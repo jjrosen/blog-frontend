@@ -32,6 +32,19 @@ export function PostPage() {
     });
   };
 
+  const handleUpdate = (post, params) => {
+    console.log("handleUpdate");
+    axios
+      .patch(`http://localhost:3000/posts/${post.id}.json`, params)
+      .then((response) => {
+        console.log(response.data);
+        setPosts(
+          posts.map((p) => (p.id === response.data.id ? response.data : p))
+        );
+        setIsPostsShowVisible(false);
+      });
+  };
+
   useEffect(handleIndex, []);
   return (
     <div>
@@ -42,7 +55,7 @@ export function PostPage() {
         show={isPostsShowVisible}
         onClose={() => setIsPostsShowVisible(false)}
       >
-        <PostShow post={currentPost} />
+        <PostShow post={currentPost} onUpdate={handleUpdate} />
       </Modal>
     </div>
   );
