@@ -9,22 +9,20 @@ export function PostPage() {
   const [posts, setPosts] = useState([]);
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
   const [currentPost, setCurrentPost] = useState([]);
+
   const handleIndex = () => {
-    axios.get("http://localhost:3000/posts.json").then((response) => {
+    axios.get("/posts.json").then((response) => {
       setPosts(response.data);
     });
   };
 
   const handleShow = (post) => {
-    console.log("handleShow", post);
     setIsPostsShowVisible(true);
     setCurrentPost(post);
   };
 
   const handleCreate = (params) => {
-    console.log("handleCreate");
-    axios.post("http://localhost:3000/posts.json", params).then((response) => {
-      console.log(response.data);
+    axios.post("/posts.json", params).then((response) => {
       // let copiedPosts = Array.from(posts); This is the long way of writing this
       // copiedPosts.push(response.data);
       // setPosts(copiedPosts);
@@ -33,16 +31,19 @@ export function PostPage() {
   };
 
   const handleUpdate = (post, params) => {
-    console.log("handleUpdate");
-    axios
-      .patch(`http://localhost:3000/posts/${post.id}.json`, params)
-      .then((response) => {
-        console.log(response.data);
-        setPosts(
-          posts.map((p) => (p.id === response.data.id ? response.data : p))
-        );
-        setIsPostsShowVisible(false);
-      });
+    axios.patch(`/posts/${post.id}.json`, params).then((response) => {
+      setPosts(
+        posts.map((p) => (p.id === response.data.id ? response.data : p))
+      );
+      setIsPostsShowVisible(false);
+    });
+  };
+
+  const handleDestroy = (post) => {
+    axios.delete(`/posts/${post.id}.json`).then((response) => {
+      setPosts(posts.filter((p) => p.id !== post.id));
+      setIsPostsShowVisible(false);
+    });
   };
 
   useEffect(handleIndex, []);
@@ -55,7 +56,11 @@ export function PostPage() {
         show={isPostsShowVisible}
         onClose={() => setIsPostsShowVisible(false)}
       >
-        <PostShow post={currentPost} onUpdate={handleUpdate} />
+        <PostShow
+          post={currentPost}
+          onUpdate={handleUpdate}
+          onDestroy={handleDestroy}
+        />
       </Modal>
     </div>
   );

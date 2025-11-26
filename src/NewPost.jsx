@@ -1,9 +1,9 @@
-export function NewPost(props) {
+export function NewPost({ onCreate }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const params = new FormData(form);
-    props.onCreate(params);
+    onCreate(params);
     form.reset();
   };
   return (
