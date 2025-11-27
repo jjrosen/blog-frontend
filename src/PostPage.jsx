@@ -48,9 +48,9 @@ export function PostPage() {
 
   useEffect(handleIndex, []);
   return (
-    <div>
+    <div className="container">
       <NewPost onCreate={handleCreate} />
-      <Post />
+      {/* <Post /> */}
       <PostsIndex postsProp={posts} onShow={handleShow} />
       <Modal
         show={isPostsShowVisible}

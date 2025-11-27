@@ -9,7 +9,9 @@
 #posts-show img {
   width: 300px;
 }
-
+#posts-new img{
+  width: 300px;
+}
 
 html {
   scroll-behavior: smooth;
