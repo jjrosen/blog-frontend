@@ -1,4 +1,6 @@
+import { LogoutLink } from "./LogoutLink";
 export function Header() {
+  const email = localStorage.getItem("email");
   return (
     <header>
       <nav
@@ -34,6 +36,20 @@ export function Header() {
               <a className="nav-link disabled" aria-disabled="true">
                 Disabled
               </a>
+              <a href="#"></a>
+              {email ? (
+                <>
+                  <span> | Logged in as {email} | </span>
+                  <LogoutLink />
+                </>
+              ) : (
+                <>
+                  <span> | </span>
+                  <a href="#signup">Signup</a>
+                  <span> | </span>
+                  <a href="#login">Login</a>
+                </>
+              )}
             </div>
           </div>
         </div>
