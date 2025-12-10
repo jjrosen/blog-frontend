@@ -1,4 +1,5 @@
 import { LogoutLink } from "./LogoutLink";
+import { Link } from "react-router-dom";
 export function Header() {
   const email = localStorage.getItem("email");
   return (
@@ -24,19 +25,17 @@ export function Header() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link className="nav-link active" aria-current="page" to="/">
                 Home
-              </a>
+              </Link>
               <a className="nav-link" href="#">
                 All Posts
               </a>
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="#">
                 New Post
-              </a>
-              <a className="nav-link disabled" aria-disabled="true">
-                Disabled
-              </a>
-              <a href="#"></a>
+              </Link>
+              {/* <a className="nav-link disabled" aria-disabled="true"></a>
+              <a href="#"></a> */}
               {email ? (
                 <>
                   <span> | Logged in as {email} | </span>
@@ -45,9 +44,13 @@ export function Header() {
               ) : (
                 <>
                   <span> | </span>
-                  <a href="#signup">Signup</a>
+                  <Link className="nav-link" to="signup">
+                    Signup
+                  </Link>
                   <span> | </span>
-                  <a href="#login">Login</a>
+                  <Link className="nav-link" to="login">
+                    Login
+                  </Link>
                 </>
               )}
             </div>
