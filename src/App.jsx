@@ -1,6 +1,9 @@
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { PostPage } from "./PostPage";
+import { HomePage } from "./HomePage";
+import { PostsIndexPage } from "./PostsIndexPage";
+import { NewPostPage } from "./PostsNewPage";
+import { PostShowPage } from "./PostShowPage";
 import { SignupPage } from "./SignupPage";
 import { LoginPage } from "./LoginPage";
 import axios from "axios";
@@ -18,7 +21,19 @@ const router = createBrowserRouter([
       </div>
     ),
     children: [
-      { path: "/", element: <PostPage /> },
+      { path: "/", element: <HomePage /> },
+      {
+        path: "/posts",
+        element: <PostsIndexPage />,
+      },
+      {
+        path: "/posts/new",
+        element: <NewPostPage />,
+      },
+      {
+        path: "/posts/:id",
+        element: <PostShowPage />,
+      },
       {
         path: "/signup",
         element: <SignupPage />,

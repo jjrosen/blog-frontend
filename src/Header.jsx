@@ -28,10 +28,10 @@ export function Header() {
               <Link className="nav-link active" aria-current="page" to="/">
                 Home
               </Link>
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/posts">
                 All Posts
               </a>
-              <Link className="nav-link" to="#">
+              <Link className="nav-link" to="/posts/new">
                 New Post
               </Link>
               {/* <a className="nav-link disabled" aria-disabled="true"></a>
