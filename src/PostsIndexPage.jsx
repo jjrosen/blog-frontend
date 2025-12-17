@@ -16,7 +16,7 @@ export function PostsIndexPage() {
   useEffect(handleIndex, []);
 
   const handleShow = (post) => {
-    navigate(`/posts/${posts.id}`);
+    navigate(`/posts/${post.id}`);
   };
   return (
     <div>
