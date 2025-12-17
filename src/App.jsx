@@ -8,7 +8,11 @@ import { SignupPage } from "./SignupPage";
 import { LoginPage } from "./LoginPage";
 import axios from "axios";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://blog-backend-vx4y.onrender.com";
+
 axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter([
